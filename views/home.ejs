@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/ico" href="http://tattek.com/minimal/images/favicon.ico" />
+    <!-- Bootstrap -->
+    <link href="css/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/vendor/animate/animate.min.css">
+    <link type="text/css" rel="stylesheet" media="all" href="js/vendor/mmenu/css/jquery.mmenu.all.css" />
+    <link rel="stylesheet" href="js/vendor/videobackground/css/jquery.videobackground.css">
+    <link rel="stylesheet" href="css/vendor/bootstrap-checkbox.css">
+    <link rel="stylesheet" href="js/vendor/rickshaw/css/rickshaw.min.css">
+    <link rel="stylesheet" href="js/vendor/morris/css/morris.css">
+    <link rel="stylesheet" href="js/vendor/tabdrop/css/tabdrop.css">
+    <link rel="stylesheet" href="js/vendor/summernote/css/summernote.css">
+    <link rel="stylesheet" href="js/vendor/summernote/css/summernote-bs3.css">
+    <link rel="stylesheet" href="js/vendor/chosen/css/chosen.min.css">
+    <link rel="stylesheet" href="js/vendor/chosen/css/chosen-bootstrap.css">
+    <link href="css/minimal.css" rel="stylesheet">
+</head>
+
+<body class="bg-1">
+    <div class="mask">
+        <div id="loader"></div>
+    </div>
+    <div id="wrap">
+        <div class="row">
+            <div class="navbar navbar-default navbar-fixed-top navbar-transparent-black mm-fixed-top" role="navigation" id="navbar">
+                <div class="navbar-header col-md-2">
+                    <a class="navbar-brand" href="index.html">
+                        <strong>MIN</strong>IMAL
+                    </a>
+                    <div class="sidebar-collapse">
+                        <a href="#">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="navbar-collapse">
+                    <ul class="nav navbar-nav quick-actions">
+                        <li class="dropdown divided user" id="current-user">
+                            <a class="dropdown-toggle options" data-toggle="dropdown" href="#">
+                                <i class="fa fa-caret-down"></i>
+                            </a>
+                            <ul class="dropdown-menu arrow settings">
+                                <li>
+                                    <h3>Backgrounds:</h3>
+                                    <ul id="color-schemes">
+                                        <li><a href="#" class="bg-1"></a></li>
+                                        <li><a href="#" class="bg-2"></a></li>
+                                        <li><a href="#" class="bg-3"></a></li>
+                                        <li><a href="#" class="bg-4"></a></li>
+                                        <li><a href="#" class="bg-5"></a></li>
+                                        <li><a href="#" class="bg-6"></a></li>
+                                    </ul>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="/signin"><i class="fa fa-power-off"></i> Logout</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a><i class="fa fa-comments"></i></a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav side-nav" id="sidebar">
+                        <li class="navigation" id="navigation">
+                            <a href="#" class="sidebar-toggle" data-toggle="#navigation">Navigation <i class="fa fa-angle-up"></i></a>
+                            <ul class="menu">
+                                <li class="active">
+                                    <a href="index.html">
+                                        <i class="fa fa-tachometer"></i> Home
+                                    </a>
+                                </li>
+                                <li>
+                                    <!--转到创建账款网页-->
+                                    <a href="/createBill">
+                                        <i class="fa fa-list"></i> 创建账款
+                                    </a>
+                                </li>
+                                <li class="dropdown">
+                                    <!--转到贷款网页-->
+                                    <a href="/requestFinancing">
+                                        <i class="fa fa-pencil"></i> 贷款
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/transferBill">
+                                        <!--转到款项转让网页-->
+                                        <i class="fa fa-tint"></i> 款项转让
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/settleBill">
+                                        <!--转到还款网页-->
+                                        <i class="fa fa-th"></i> 还款
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/signin">
+                                        <!--转到登录网页-->
+                                        <i class="fa fa-play-circle"></i> logout
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-play-circle"></i> 用户: <%- username %>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-play-circle"></i> 存款: <%- balance %>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-play-circle"></i> 银行贷款: <%- bill %>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-play-circle"></i> 信誉: <%- reputation %>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="content" class="col-md-12">
+                <div class="pageheader">
+                    <h2><i class="fa fa-tachometer"></i> Finorm
+                </div>
+                <div class="main">
+                    <div class="row cards">
+                        <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+                            <a href="/createBill">
+                                <div class="card card-redbrown hover">
+                                    <div class="front">
+                                        <div class="media">
+                                            <span class="pull-left">
+                                                <i class="fa fa-users media-object"></i>
+                                            </span>
+                                            <div class="media-body">
+                                                <h2 class="media-heading animate-number">创建账款</h2>
+                                                <small>点击此处进入创建账款页</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="back">
+                                        <a href="/createBill">
+                                            <!--转到创建账款网页-->
+                                            <i class="fa fa-bar-chart-o fa-4x"></i>
+                                            <span>创建账款</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+                            <div class="card card-blue hover">
+                                <div class="front">
+                                    <div class="media">
+                                        <span class="pull-left">
+                                            <i class="fa fa-shopping-cart media-object"></i>
+                                        </span>
+                                        <div class="media-body">
+                                            <h2 class="media-heading animate-number">贷款</h2>
+                                            <small>点击此处进入贷款功能页</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="back">
+                                    <a href="/requestFinancing">
+                                        <!--转到贷款网页-->
+                                        <i class="fa fa-bar-chart-o fa-4x"></i>
+                                        <span>贷款</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+                            <div class="card card-greensea hover">
+                                <div class="front">
+                                    <div class="media">
+                                        <span class="pull-left">
+                                            <i class="fa fa-usd media-object"></i>
+                                        </span>
+                                        <div class="media-body">
+                                            <h2 class="media-heading animate-number">还款</h2>
+                                            <small>点击此处进入还款功能页</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="back">
+                                    <a href="/settleBill">
+                                        <!--转到还款网页-->
+                                        <i class="fa fa-bar-chart-o fa-4x"></i>
+                                        <span>还款</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-container col-lg-3 col-sm-6 col-xs-12">
+                            <div class="card card-slategray hover">
+                                <div class="front">
+                                    <div class="media">
+                                        <span class="pull-left">
+                                            <i class="fa fa-eye media-object"></i>
+                                        </span>
+                                        <div class="media-body">
+                                            <h2 class="media-heading animate-number">款项转让</h2>
+                                            <small>点击此处进入款项转让页</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="back">
+                                    <a href="/transferBill">
+                                        <!--转到款项转让网页-->
+                                        <i class="fa fa-bar-chart-o fa-4x"></i>
+                                        <span>款项转让</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/vendor/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/vendor/mmenu/js/jquery.mmenu.min.js"></script>
+    <script type="text/javascript" src="js/vendor/sparkline/jquery.sparkline.min.js"></script>
+    <script type="text/javascript" src="js/vendor/nicescroll/jquery.nicescroll.min.js"></script>
+    <script type="text/javascript" src="js/vendor/animate-numbers/jquery.animateNumbers.js"></script>
+    <script type="text/javascript" src="js/vendor/videobackground/jquery.videobackground.js"></script>
+    <script type="text/javascript" src="js/vendor/blockui/jquery.blockUI.js"></script>
+    <script src="js/vendor/flot/jquery.flot.min.js"></script>
+    <script src="js/vendor/flot/jquery.flot.time.min.js"></script>
+    <script src="js/vendor/flot/jquery.flot.selection.min.js"></script>
+    <script src="js/vendor/flot/jquery.flot.animator.min.js"></script>
+    <script src="js/vendor/flot/jquery.flot.orderBars.js"></script>
+    <script src="js/vendor/easypiechart/jquery.easypiechart.min.js"></script>
+    <script src="js/vendor/rickshaw/raphael-min.js"></script>
+    <script src="js/vendor/rickshaw/d3.v2.js"></script>
+    <script src="js/vendor/rickshaw/rickshaw.min.js"></script>
+    <script src="js/vendor/morris/morris.min.js"></script>
+    <script src="js/vendor/tabdrop/bootstrap-tabdrop.min.js"></script>
+    <script src="js/vendor/summernote/summernote.min.js"></script>
+    <script src="js/vendor/chosen/chosen.jquery.min.js"></script>
+    <script src="js/minimal.min.js"></script>
+    <script>
+    $(function() {
+
+        // Initialize card flip
+        $('.card.hover').hover(function() {
+            $(this).addClass('flip');
+        }, function() {
+            $(this).removeClass('flip');
+        });
+
+        // Initialize flot chart
+        var d1 = [
+            [1, 715],
+            [2, 985],
+            [3, 1525],
+            [4, 1254],
+            [5, 1861],
+            [6, 2621],
+            [7, 1987],
+            [8, 2136],
+            [9, 2364],
+            [10, 2851],
+            [11, 1546],
+            [12, 2541]
+        ];
+        var d2 = [
+            [1, 463],
+            [2, 578],
+            [3, 327],
+            [4, 984],
+            [5, 1268],
+            [6, 1684],
+            [7, 1425],
+            [8, 1233],
+            [9, 1354],
+            [10, 1200],
+            [11, 1260],
+            [12, 1320]
+        ];
+
+        $(window).resize(function() {
+            // redraw the graph in the correctly sized div
+            //plot.resize();
+            //plot.setupGrid();
+            //plot.draw();
+        });
+
+        // tooltips showing
+        $("#statistics-chart").bind("plothover", function(event, pos, item) {
+            if (item) {
+                var x = item.datapoint[0],
+                    y = item.datapoint[1];
+
+                $("#tooltip").html('<h1 style="color: #418bca">' + months[x - 1] + '</h1>' + '<strong>' + y + '</strong>' + ' ' + item.series.label)
+                    .css({ top: item.pageY - 30, left: item.pageX + 5 })
+                    .fadeIn(200);
+            } else {
+                $("#tooltip").hide();
+            }
+        });
+
+        //tooltips options
+        $("<div id='tooltip'></div>").css({
+            position: "absolute",
+            //display: "none",
+            padding: "10px 20px",
+            "background-color": "#ffffff",
+            "z-index": "99999"
+        }).appendTo("body");
+
+        //generate actual pie charts
+        $('.pie-chart').easyPieChart();
+
+
+        //server load rickshaw chart
+        var graph;
+
+        var seriesData = [
+            [],
+            []
+        ];
+        var random = new Rickshaw.Fixtures.RandomData(50);
+
+        for (var i = 0; i < 50; i++) {
+            random.addData(seriesData);
+        }
+
+        graph = new Rickshaw.Graph({
+            element: document.querySelector("#serverload-chart"),
+            height: 150,
+            renderer: 'area',
+            series: [{
+                data: seriesData[0],
+                color: '#6e6e6e',
+                name: 'File Server'
+            }, {
+                data: seriesData[1],
+                color: '#fff',
+                name: 'Mail Server'
+            }]
+        });
+
+        var hoverDetail = new Rickshaw.Graph.HoverDetail({
+            graph: graph,
+        });
+
+        setInterval(function() {
+            random.removeData(seriesData);
+            random.addData(seriesData);
+            graph.update();
+
+        }, 1000);
+        Morris.Donut({
+            element: 'browser-usage',
+            data: [
+                { label: "Chrome", value: 25 },
+                { label: "Safari", value: 20 },
+                { label: "Firefox", value: 15 },
+                { label: "Opera", value: 5 },
+                { label: "Internet Explorer", value: 10 },
+                { label: "Other", value: 25 }
+            ],
+            colors: ['#00a3d8', '#2fbbe8', '#72cae7', '#d9544f', '#ffc100', '#1693A5']
+        });
+        $('#browser-usage').find("path[stroke='#ffffff']").attr('stroke', 'rgba(0,0,0,0)');
+        $('#projectbar1').sparkline('html', { type: 'bar', barColor: '#22beef', barWidth: 4, height: 20 });
+        $('#projectbar2').sparkline('html', { type: 'bar', barColor: '#cd97eb', barWidth: 4, height: 20 });
+        $('#projectbar3').sparkline('html', { type: 'bar', barColor: '#a2d200', barWidth: 4, height: 20 });
+        $('#projectbar4').sparkline('html', { type: 'bar', barColor: '#ffc100', barWidth: 4, height: 20 });
+        $('#projectbar5').sparkline('html', { type: 'bar', barColor: '#ff4a43', barWidth: 4, height: 20 });
+        $('#projectbar6').sparkline('html', { type: 'bar', barColor: '#a2d200', barWidth: 4, height: 20 });
+        $('.table.table-sortable th.sortable').click(function() {
+            var o = $(this).hasClass('sort-asc') ? 'sort-desc' : 'sort-asc';
+            $('th.sortable').removeClass('sort-asc').removeClass('sort-desc');
+            $(this).addClass(o);
+        });
+        $('#todolist li label').click(function() {
+            $(this).toggleClass('done');
+        });
+        $('.tabdrop').tabdrop({ text: '<i class="fa fa-th-list"></i>' });
+        $('#quick-message-content').summernote({
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']],
+            ],
+            height: 143
+        });
+        $(".chosen-select").chosen({ disable_search_threshold: 10 });
+    })
+    </script>
+</body>
+
+</html>

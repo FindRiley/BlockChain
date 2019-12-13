@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "config-lite": "^2.1.0",
+    "cookie-parser": "^1.4.4",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "express-formidable": "^1.2.0",
+    "express-session": "^1.17.0"
+  }
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Transaction</title>
+  <meta name="description" content="">
+  <link href="" rel="stylesheet">
+  <link rel=stylesheet type="text/css" href="css/transaction.css">
+  <script type="text/javascript" src="js/transaction.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div class="login">
+      <div class="logo">Transaction</div>
+      <form action="" method="post" >
+        <% items.forEach(function(item){%>
+          <div class="public-input">
+            <%- item%>
+          </div>
+        <% })%>
+        <button type = "submit" class="Emit public-input">发布</button>
+      </form>
+      <a href='/home'><button>返回</button></a>
+    </div>
+  </div>
+</body>
+</html>

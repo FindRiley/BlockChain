@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <title>Finorm - Login Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+
+    <!-- Bootstrap -->
+    <link href="css/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/vendor/bootstrap-checkbox.css">
+
+    <link href="css/minimal.css" rel="stylesheet">
+  </head>
+  <body class="bg-1">
+ 
+
+    <!-- Wrap all page content here -->
+    <div id="wrap">
+      <!-- Make page fluid -->
+      <div class="row">
+        <!-- Page content -->
+        <div id="content" class="col-md-12 full-page login">
+
+
+          <div class="inside-block">
+            <img src="images/logo-big.png" alt class="logo">
+            <h1><strong>Welcome</strong> to Finorm</h1>
+            <h5>Minimal Admin Theme</h5>
+
+            <form id="form-signin" class="form-signin" method="post">
+              <section>
+                <div class="input-group field">
+                  <input type="text" class="form-control" name="username" placeholder="Username">
+                  <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                </div>
+                <div class="input-group field">
+                  <input type="password" class="form-control" name="password" placeholder="Password">
+                  <div class="input-group-addon"><i class="fa fa-key"></i></div>
+                </div>
+              </section>
+              <section class="log-in">
+                <%- method1%>
+                <span>or</span>
+                <%- method2%>
+              </section>
+            </form>
+            <%- message%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
